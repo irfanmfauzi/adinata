@@ -65,3 +65,23 @@ func (p *postRepo) GetPostById(ctx context.Context, postId int64) (entity.Post, 
 
 	return postData, nil
 }
+
+func (p *postRepo) GetPosts(ctx context.Context, searchParams string) ([]entity.Post, error) {
+	query := `
+	select posts.*, array_agg(tags.label) as tags
+	from
+		posts
+	join post_tags pt on pt.post_id = posts.id
+	join tags on tags.id = pt.tag_id
+	group by posts.id
+	having
+	    array_to_string(array_agg(tags.label), ';') ilike '%'||$1||'%';
+	`
+	result := []entity.Post{}
+	err := p.db.SelectContext(ctx, &result, query, searchParams)
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}

@@ -25,6 +25,7 @@ type PostRepoProvider interface {
 	UpdatePost(ctx context.Context, tx TxProvider, postId int64, title, content string, status entity.Status, publishTime sql.NullTime) error
 	DeletePost(ctx context.Context, tx TxProvider, postId int64) error
 	GetPostById(ctx context.Context, postId int64) (entity.Post, error)
+	GetPosts(ctx context.Context, searchParams string) ([]entity.Post, error)
 }
 
 type PostTagRepoProvider interface {

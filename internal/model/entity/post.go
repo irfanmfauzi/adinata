@@ -32,5 +32,5 @@ type PostTag struct {
 	Id     int64  `db:"id"`
 	PostId int64  `db:"post_id"`
 	TagId  int64  `db:"tag_id"`
-	Label  string `db:"label,omitempty"`
+	Label  string `db:"label"`
 }

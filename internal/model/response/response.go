@@ -26,6 +26,11 @@ type GetPostByIdResponse struct {
 	Data entity.Post `json:"data"`
 }
 
+type GetPostResponse struct {
+	GenericResponse
+	Data []entity.Post `json:"data"`
+}
+
 type GetTagResponse struct {
 	GenericResponse
 	Data []entity.Tag `json:"data"`

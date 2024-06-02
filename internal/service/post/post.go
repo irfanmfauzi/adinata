@@ -20,6 +20,8 @@ type PostServiceProvider interface {
 	DeletePost(ctx context.Context, posId int64) error
 
 	GetPostDetail(ctx context.Context, posId int64) (entity.Post, error)
+
+	GetPosts(ctx context.Context, searchParams string) ([]entity.Post, error)
 }
 
 type PostServiceConfig struct {
@@ -199,4 +201,8 @@ func (p *postService) DeletePost(ctx context.Context, posId int64) error {
 
 func (p *postService) GetPostDetail(ctx context.Context, postId int64) (entity.Post, error) {
 	return p.postRepo.GetPostById(ctx, postId)
+}
+
+func (p *postService) GetPosts(ctx context.Context, searchParams string) ([]entity.Post, error) {
+	return p.postRepo.GetPosts(ctx, searchParams)
 }
