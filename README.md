@@ -6,6 +6,21 @@ One Paragraph of project description goes here
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+## Migration
+[create migration](https://github.com/golang-migrate/migrate) installed
+
+export POSTGRESQL_URL
+```bash
+export POSTGRESQL_URL='postgres://username:password@localhost:5432/db_name?sslmode=disable'
+```
+run migration command
+```bash
+migrate -database ${POSTGRESQL_URL} -path files/db/migrations up
+```
+
+
+
+
 ## MakeFile
 
 run all make commands with clean tests

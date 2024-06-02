@@ -1,13 +1,16 @@
 package main
 
 import (
-	"adinata/internal/server"
+	"adinata/internal/handler"
 	"fmt"
+	"log/slog"
 )
 
 func main() {
 
-	server := server.NewServer()
+	server := handler.NewServer()
+
+	slog.Info("Starting Adinata")
 
 	err := server.ListenAndServe()
 	if err != nil {
