@@ -37,7 +37,13 @@ func (t *tagHandler) GetTagHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resp, _ := json.Marshal(tags)
+	resp, _ := json.Marshal(response.GetTagResponse{
+		GenericResponse: response.GenericResponse{
+			Success: true,
+			Message: "Success Get Tags",
+		},
+		Data: tags,
+	})
 	w.Write(resp)
 	w.WriteHeader(http.StatusOK)
 }

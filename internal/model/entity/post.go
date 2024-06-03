@@ -23,9 +23,9 @@ type Post struct {
 }
 
 type Tag struct {
-	Id    int64   `db:"id"`
-	Label string  `db:"label"`
-	Posts []int64 `db:"posts"`
+	Id    int64   `db:"id" json:"id"`
+	Label string  `db:"label" json:"label"`
+	Posts []int64 `db:"posts" json:"posts,omitempty"`
 }
 
 type PostTag struct {
